@@ -6,7 +6,7 @@ public:
                 if(board[i][j] != '.') {
                     char c = board[i][j];
                     board[i][j] = '.';
-                    if(isValid(board,i,j,c)) {
+                    if(isSafe(board,i,j,c)) {
                         board[i][j] = c;
                         continue;
                     }
@@ -18,12 +18,13 @@ public:
         }
         return true;
     }
-    bool isValid(vector<vector<char>>& board,int row,int col,char c) {
+    bool isSafe(vector<vector<char>>& board,int row,int col,char c) {
         for(int i=0;i<9;i++) {
-            
+            //check column for safety
             if(board[i][col] == c) return false;
+            //check row for safety
             if(board[row][i] == c) return false;
-            
+            //check grid for safety
             if(board[3*(row/3)+i/3][3*(col/3)+i%3] == c) return false;
         }
         return true;
