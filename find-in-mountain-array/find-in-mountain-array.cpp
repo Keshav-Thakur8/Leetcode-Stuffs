@@ -10,7 +10,12 @@
 
 class Solution {
 public:
+    //Three Binary Search is required
+    //1. Find peak
+    //2. Then search on left part
+    //3. Search on right part
     int findInMountainArray(int target, MountainArray &mountainArr) {
+        //first find peak element using binary search
         int n = mountainArr.length();
         int si = 0;
         int ei = n-1;
@@ -31,27 +36,46 @@ public:
             }
         }
         
-        if(mountainArr.get(mid) == target) return mid;
+        //if the mid calculated for the peak is the target then return that mid
+        if(mountainArr.get(mid) == target){
+            return mid;
+        }
+        
+        //otherwise do binary search in left part
         si = 0;
         ei = mid-1;
         
         while(si <= ei){
             mid = si + (ei - si)/2;
-            if(mountainArr.get(mid) == target) return mid;
-            else if(mountainArr.get(mid) > target) ei = mid-1;
-            else si = mid+1;
+            if(mountainArr.get(mid) == target) {
+                return mid;
+            }
+            else if(mountainArr.get(mid) > target) {
+                ei = mid-1;
+            }
+            else {
+                si = mid+1;
+            }
         }
         
+        //do binary search in the right part
         si = mid;
         ei = n-1;
         
         while(si <= ei){
             mid = si + (ei - si)/2;
-            if(mountainArr.get(mid) == target) return mid;
-            else if(mountainArr.get(mid) < target) ei = mid-1;
-            else si = mid+1;
-        }
+            if(mountainArr.get(mid) == target) {
+                return mid;
+            }
+            else if(mountainArr.get(mid) < target) {
+                ei = mid-1;
+            }
+            else {
+                si = mid+1;
+            }
         
+
+        }
         return -1;
     }
 };
