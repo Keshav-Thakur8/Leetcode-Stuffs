@@ -7,7 +7,7 @@ public:
         int i = row;
         int j = col;
         while(row >= 0 && col >= 0){
-            if(board[row][col] == '1') {
+            if(board[row][col] == 1) {
                 return false;
             }
             row--;
@@ -18,7 +18,7 @@ public:
         col = j;
         row = i;
         while(col >= 0) {
-            if(board[row][col] == '1') {
+            if(board[row][col] == 1) {
                 return false;
             }
             col--;
@@ -29,7 +29,7 @@ public:
         col = j;
         row = i;
         while(row < n && col >= 0){
-            if(board[row][col] == '1') {
+            if(board[row][col] == 1) {
                 return false;
             }
             row++;
@@ -50,10 +50,10 @@ public:
         //Recursive Step
         for(int row = 0 ; row < n ; row++) {
             if(isSafe(row, col, board, n)) {
-                board[row][col] = '1';
+                board[row][col] = 1;
                 solver(col+1, board, n);
                 //Backtrack
-                board[row][col] = '0';
+                board[row][col] = 0;
             }
         }
     }
