@@ -11,19 +11,6 @@ public:
             }
         }
         return j;
-//         int n = nums.size();
-//         int si = 0;
-//         int ei = n-1;
-//         while(si < ei){
-//             if(nums[si] == val){
-//                 swap(nums[si], nums[ei]);
-//                 si++;
-//                 ei--;
-//             }else{
-//                 si++;
-//             }
-            
-//         }
         
     }
 };
