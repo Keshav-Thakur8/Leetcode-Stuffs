@@ -1,5 +1,6 @@
 class Solution {
 public:
+    //Ouick Sort Approach
     void partition(vector<int>& nums, int pivot){
         int n = nums.size();
         for(int i=0,j=0 ; i<n ; i++){
