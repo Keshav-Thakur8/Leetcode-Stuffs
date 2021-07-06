@@ -2,23 +2,28 @@ class Solution {
 public:
     //Efficient DP Solution
     int path(vector<vector<int>>& obstacleGrid,int x, int y, int m, int n, vector<vector<int>>& dp){
-        //Base Case
+        //Base Case: we have reached end-point
         if(x==m-1 && y==n-1){
             dp[x][y] = 1;
         }
+        //Out of solution bound
         if(x<0 || x>=m || y<0 || y>=n || obstacleGrid[x][y] == 1){
             return 0;
         }
+        //this step reduces CPU time
+        //here we are using pre-computed value
         if(dp[x][y] != -1){
             return dp[x][y];
         }
         else{
+            //compute the value and store it for further calculation
             return dp[x][y] = path(obstacleGrid, x+1, y, m, n, dp)+path(obstacleGrid, x, y+1, m, n, dp);
         }
     }
     int uniquePathsWithObstacles(vector<vector<int>>& obstacleGrid) {
         int m = obstacleGrid.size();
         int n = obstacleGrid[0].size();
+        //vector to store the pre-computed value
         vector<vector<int>> dp(m, vector<int>(n, -1));
         int ans = path(obstacleGrid,0,0,m,n,dp);
         return ans;
