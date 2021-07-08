@@ -13,6 +13,7 @@ public:
             while (si < ei && nums[ei] == nums[ei - 1]){
                 ei--;
             }
+            //rest is same as search in rotated sorted array
             int mid = (si+ei)/2;
             if(nums[mid] == target){
                 return true;
