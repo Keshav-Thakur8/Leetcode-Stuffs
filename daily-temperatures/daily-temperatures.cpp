@@ -15,6 +15,7 @@ public:
             }
             s.push(i);
         }
+        //for all elements where next greater doesn't exist
         while(!s.empty()){
             ans[s.top()] = 0;
             s.pop();
