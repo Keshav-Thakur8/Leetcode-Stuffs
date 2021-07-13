@@ -11,7 +11,9 @@ public:
                 ans[st.top()] = nums[idx];
                 st.pop();
             }
-            st.push(idx);
+            if(ans[idx] == -1){
+                st.push(idx);
+            }
         }
         return ans;
     }
