@@ -29,6 +29,9 @@ public:
         }
         ListNode* slow = head;
         ListNode* fast = head;
+        //the moment fast is at the second last node or the last node
+        //we will stop fast pointer
+        //this will help in odd or even sized linked list
         while(fast->next != NULL && fast->next->next != NULL) {
             slow = slow->next;
             fast = fast->next->next;
