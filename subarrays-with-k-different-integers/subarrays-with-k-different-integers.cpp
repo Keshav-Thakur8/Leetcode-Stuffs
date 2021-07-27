@@ -15,7 +15,8 @@ public:
             else{
                 mp[A[right]]++;
             }
-
+            
+            //start contracting window
             while(mp.size() > k){
                 mp[A[left]]--;
                 if(mp[A[left]] == 0){
