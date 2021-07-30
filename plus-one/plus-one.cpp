@@ -10,6 +10,7 @@ public:
             digits[i] = 0;
             
         }
+        //for the input [9], [9,9] or [9,9,9]
         digits[0] = 1;
         digits.push_back(0);
         return digits;
