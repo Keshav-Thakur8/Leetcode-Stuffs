@@ -11,17 +11,37 @@
  */
 class Solution {
 public:
-    //recursive
-    bool helper(TreeNode* root, long min, long max) {
-        if(root == NULL) {
-            return true;
-        }
-        if(root->val <= min || root->val >= max) {
-            return false;
-        }
-        return helper(root->left, min, root->val) && helper(root->right, root->val, max);
-    }
+    // //recursive
+    // bool helper(TreeNode* root, long min, long max) {
+    //     if(root == NULL) {
+    //         return true;
+    //     }
+    //     if(root->val <= min || root->val >= max) {
+    //         return false;
+    //     }
+    //     return helper(root->left, min, root->val) && helper(root->right, root->val, max);
+    // }
+    
     bool isValidBST(TreeNode* root) {
-        return helper(root, LONG_MIN, LONG_MAX);
+        stack<TreeNode*> st;
+        TreeNode* prev = NULL;
+        while(root || !st.empty()) {
+            while(root) {
+                st.push(root);
+                root = root->left;
+            }
+            root = st.top();
+            st.pop();
+            
+            if(prev && root->val <= prev->val) {
+                return false;
+            }
+            
+            prev = root;
+            root = root->right;
+        }
+        return true;
+        
+        //return helper(root, LONG_MIN, LONG_MAX);
     }
 };
