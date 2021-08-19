@@ -11,45 +11,43 @@
  */
 class Solution {
 public:
-    void solve(TreeNode* root, int curr_sum, int targetSum, unordered_map<int, int> mp, int &cnt) {
+    int ans = 0;
+    // void solve(TreeNode* root, int curr_sum, int targetSum, unordered_map<int, int> mp, int &cnt) {
+    //     if(root == NULL) {
+    //         return;
+    //     }
+    //     curr_sum += root->val;
+    //     if(mp.count(curr_sum-targetSum)) {
+    //         cnt += mp[curr_sum-targetSum];
+    //     }
+    //     mp[curr_sum]++;
+    //     solve(root->left, curr_sum, targetSum, mp, cnt);
+    //     solve(root->right, curr_sum, targetSum, mp, cnt);
+    //     return;
+    // }
+    void solver(TreeNode* root, int targetSum) {
         if(root == NULL) {
             return;
         }
-        curr_sum += root->val;
-        if(mp.count(curr_sum-targetSum)) {
-            cnt += mp[curr_sum-targetSum];
+        if(root->val == targetSum) {
+            ans++;
         }
-        mp[curr_sum]++;
-        solve(root->left, curr_sum, targetSum, mp, cnt);
-        solve(root->right, curr_sum, targetSum, mp, cnt);
-        return;
+        solver(root->left, targetSum-root->val);
+        solver(root->right, targetSum-root->val);
     }
     int pathSum(TreeNode* root, int targetSum) {
-        unordered_map<int, int> mp;
-        mp[0] = 1;
-        int cnt = 0;
-        solve(root, 0, targetSum, mp, cnt);
-        return cnt;
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+        // unordered_map<int, int> mp;
+        // mp[0] = 1;
+        // int cnt = 0;
+        // solve(root, 0, targetSum, mp, cnt);
+        // return cnt;
+        if(root != NULL) {
+            solver(root, targetSum);
+            pathSum(root->left, targetSum);
+            pathSum(root->right, targetSum);
+        }
+        return ans;
+         
         
         // if(root == NULL) {
         //     return 0;
