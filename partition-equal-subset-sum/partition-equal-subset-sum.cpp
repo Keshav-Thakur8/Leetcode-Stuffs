@@ -5,20 +5,20 @@ public:
         if(tot_sum == 0) {
             return 1;
         }
-        if(i == 0 && tot_sum != 0) {
+        if(i == nums.size() || tot_sum < 0) {
             return 0;
         }
         
-        if(nums[i-1] > tot_sum) {
-            return solve(nums, i-1, tot_sum, dp);
-        }
+        // if(nums[i-1] > tot_sum) {
+        //     return solve(nums, i-1, tot_sum, dp);
+        // }
         //if already computed
         if(dp[i][tot_sum] != -1) {
             return dp[i][tot_sum];
         }
         
         //otherwise compute
-        dp[i][tot_sum] = solve(nums, i-1, tot_sum-nums[i-1], dp) || solve(nums, i-1, tot_sum, dp);
+        dp[i][tot_sum] = solve(nums, i+1, tot_sum-nums[i], dp) || solve(nums, i+1, tot_sum, dp);
         return dp[i][tot_sum];
     }
     bool canPartition(vector<int>& nums) {
@@ -32,6 +32,6 @@ public:
         }
         sum = sum/2;
         vector<vector<int>> dp(n+1, vector<int>(sum+1, -1));
-        return solve(nums, n, sum, dp);
+        return solve(nums, 0, sum, dp);
     }
 };
