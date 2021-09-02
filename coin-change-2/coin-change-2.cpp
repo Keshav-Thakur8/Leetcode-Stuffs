@@ -16,13 +16,14 @@ public:
         }
         
         //otherwise solve it
+        //include index + do not include index
         dp[index][amount] = solve(amount-coins[index], coins, dp, index) + solve(amount, coins, dp, index+1);
         
         return dp[index][amount];
     }
     int change(int amount, vector<int>& coins) {
         int n = coins.size();
-        vector<vector<int>> dp(n+2, vector<int>(amount+2, -1));
+        vector<vector<int>> dp(n+1, vector<int>(amount+1, -1));
         return solve(amount, coins, dp, 0);
     }
 };
