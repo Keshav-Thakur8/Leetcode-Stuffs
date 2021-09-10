@@ -10,6 +10,7 @@ public:
         if(target > nums[n-1]){
             return n;
         }
+        //if the target should lie before the first element
         if(target < nums[0]){
             return 0;
         }
