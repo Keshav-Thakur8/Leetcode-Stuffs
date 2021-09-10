@@ -7,9 +7,9 @@ public:
         int si = 1;
         int ei = n;
         int ans = n;
-        while(si <= ei){
-            int mid = si+(ei-si)/2;
-            if(isBadVersion(mid)){
+        while(si <= ei) {
+            int mid = si + (ei-si)/2;
+            if(isBadVersion(mid)) {
                 ans = mid;
                 ei = mid-1;
             }
@@ -18,6 +18,5 @@ public:
             }
         }
         return ans;
-        
     }
 };
