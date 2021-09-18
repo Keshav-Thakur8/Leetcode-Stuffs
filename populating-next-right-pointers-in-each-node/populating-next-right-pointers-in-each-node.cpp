@@ -21,7 +21,7 @@ public:
     Node* connect(Node* root) {
         Node* level = root;
         while(level != NULL) {
-            Node* curr = level;
+            Node* curr = level;                                                      
             while(curr != NULL) {
                 if(curr->left) {
                     curr->left->next = curr->right;
