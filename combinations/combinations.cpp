@@ -11,6 +11,7 @@ public:
         if(si > n)
             return;
         //pruning:removing unwanted part
+        //i.e if k is greater then the size of vector
         if(k>(n-si+1))
             return;
         
