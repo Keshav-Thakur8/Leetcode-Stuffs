@@ -6,6 +6,7 @@ public:
         int ei = n-1;
         while(si <= ei){
             int mid = (si+ei)/2;
+            //Handle the case if mid=0 or mid=n
             if((mid-1<0 || nums[mid]>nums[mid-1]) && (mid+1>=n || nums[mid]>nums[mid+1])){
                 return mid;
             }
