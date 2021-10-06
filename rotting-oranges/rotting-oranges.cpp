@@ -15,7 +15,9 @@ public:
         //queue to store pairs of coordinates
         queue<vector<int>> q;
         //4 direction move
-        vector<vector<int>> dir = {{1,0},{0,1},{-1,0},{0,-1}};
+        //vector<vector<int>> dir = {{1,0},{0,1},{-1,0},{0,-1}};
+        int dx[] = {1,0,-1,0};
+        int dy[] = {0,1,0,-1};
         for(int i=0 ; i<m ; i++){
             for(int j=0 ; j<n ; j++){
                 //count of valid oranges
@@ -41,8 +43,8 @@ public:
                 //look in all four direction
                 for(int i=0 ; i<4 ; i++){
                     //record the coordinates
-                    int x_cor = curr[0]+dir[i][0];
-                    int y_cor = curr[1]+dir[i][1];
+                    int x_cor = curr[0]+dx[i];
+                    int y_cor = curr[1]+dy[i];
                     //if we go out of order or find orange which is not fresh
                     if(!isSafe(x_cor, y_cor, m, n, grid))
                         continue;
