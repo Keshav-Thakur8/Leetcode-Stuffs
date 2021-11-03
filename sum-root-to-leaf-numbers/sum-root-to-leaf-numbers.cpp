@@ -19,7 +19,7 @@ public:
         if(root->left == NULL && root->right == NULL) {
             return sum;
         }
-        return helper(root->left, sum) + helper(root->right, sum);
+        return helper(root->left, sum)+helper(root->right, sum);
     }
     int sumNumbers(TreeNode* root) {
         return helper(root, 0);
