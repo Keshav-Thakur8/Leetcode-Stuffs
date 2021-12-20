@@ -8,19 +8,13 @@ public:
         int ei = n-2;
         while(si <= ei){
             //int mid = si+(ei-si)/2;
-            int mid = (si+ei)/2;
+            int mid = (si+ei) >> 1;
             //if mid is the answer
             
             if(nums[mid] == nums[mid^1])
                 si=mid + 1;
             else
-                ei = mid - 1;   
-            
-            
-            
-            
-            
-            
+                ei = mid - 1;
             
             
             // if((mid==0 || nums[mid] != nums[mid-1]) && (mid==n-1 || nums[mid] != nums[mid+1]))
