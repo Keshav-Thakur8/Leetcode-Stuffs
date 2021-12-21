@@ -7,8 +7,8 @@ public:
         //int ei = n-1;
         int ei = n-2;
         while(si <= ei){
-            //int mid = si+(ei-si)/2;
-            int mid = (si+ei) >> 1;
+            int mid = si+(ei-si)/2;
+            //int mid = (si+ei) >> 1;
             //if mid is the answer
             
             if(nums[mid] == nums[mid^1])
