@@ -1,11 +1,13 @@
 class Solution {
 public:
     vector<vector<int>> merge(vector<vector<int>>& intervals) {
+        //TC: O(nlogn)
         vector<vector<int>> ans;
         int n = intervals.size();
         if(n == 0){
             return ans;
         }
+        //sort on the basis of first index
         sort(intervals.begin(),intervals.end());
         vector<int> temp = intervals[0];
         for(auto it : intervals){
@@ -17,6 +19,7 @@ public:
                 temp = it;
             }
         }
+        //Take last interval also
         ans.push_back(temp);
         return ans;
     }
