@@ -41,11 +41,11 @@ class Solution {
     bool isCycle(int V, vector<int> adj[]) {
         // Code here
         vector<int> vis(V+1, false);
-        bool flag = false;
+        //bool flag = false;
         for(int i=0 ; i<V ; i++) {
             if(!vis[i]) {
                 if(checkCycle(i, vis, adj, 0)) {
-                    flag = true;
+                    //flag = true;
                     return true;
                 }
             }
