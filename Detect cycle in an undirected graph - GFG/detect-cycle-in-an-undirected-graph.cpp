@@ -7,36 +7,38 @@ class Solution {
   public:
     // Function to detect cycle in an undirected graph.
     bool checkCycle(int node, vector<int> &vis, vector<int> adj[], int parent) {
-        queue<pair<int, int>> q;
-        q.push({node,0});
-        vis[node] = true;
-        while(!q.empty()) {
-            int node = q.front().first;
-            int parent = q.front().second;
-            q.pop();
-            for(auto it : adj[node]) {
-                if(vis[it] == false) {
-                    q.push({it, node});
-                    vis[it] = true;
-                }
-                else if(vis[it] == true && it != parent) {
-                    return true;
-                }
-            }
-        }
-        return false;
+        // queue<pair<int, int>> q;
+        // q.push({node,0});
         // vis[node] = true;
-        // for(auto it : adj[node]) {
-        //     if(vis[it] == false) {
-        //         if(checkCycle(it, vis, adj, node) == true) {
+        // while(!q.empty()) {
+        //     int node = q.front().first;
+        //     int parent = q.front().second;
+        //     q.pop();
+        //     for(auto it : adj[node]) {
+        //         if(vis[it] == false) {
+        //             q.push({it, node});
+        //             vis[it] = true;
+        //         }
+        //         else if(vis[it] == true && it != parent) {
         //             return true;
         //         }
         //     }
-        //     else if(vis[it] == true && it != parent) {
-        //         return true;
-        //     }
         // }
         // return false;
+        
+        
+        vis[node] = true;
+        for(auto it : adj[node]) {
+            if(vis[it] == false) {
+                if(checkCycle(it, vis, adj, node) == true) {
+                    return true;
+                }
+            }
+            else if(vis[it] == true && it != parent) {
+                return true;
+            }
+        }
+        return false;
     }
     bool isCycle(int V, vector<int> adj[]) {
         // Code here
@@ -45,7 +47,7 @@ class Solution {
         for(int i=0 ; i<V ; i++) {
             if(!vis[i]) {
                 if(checkCycle(i, vis, adj, 0)) {
-                    //flag = true;
+                    //flag = true;7
                     return true;
                 }
             }
