@@ -7,31 +7,65 @@ class Solution
 {
 	public:
 	//Function to return list containing vertices in Topological order. 
-	void solve(int node, stack<int> &st, vector<int> &vis, vector<int> adj[]) {
-	    vis[node] = 1;
-	    for(auto it : adj[node]) {
-	        if(!vis[it]) {
-	            solve(it, st, vis, adj);
-	        }
-	    }
-	    st.push(node);
-	}
+// 	void solve(int node, stack<int> &st, vector<int> &vis, vector<int> adj[]) {
+// 	    vis[node] = 1;
+// 	    for(auto it : adj[node]) {
+// 	        if(!vis[it]) {
+// 	            solve(it, st, vis, adj);
+// 	        }
+// 	    }
+// 	    st.push(node);
+// 	}
 	vector<int> topoSort(int V, vector<int> adj[]) 
 	{
 	    // code here
-	    vector<int> vis(V+1,0);
+	    // BFS
+	    vector<int> inDegree(V+1,0);
+	    queue<int> q;
 	    vector<int> ans;
-	    stack<int> st;
 	    for(int i=0 ; i<V ; i++) {
-	        if(vis[i] == 0) {
-	            solve(i, st, vis, adj);
+	        for(auto it : adj[i]) {
+	            inDegree[it]++;
 	        }
 	    }
-	    while(!st.empty()) {
-	        ans.push_back(st.top());
-	        st.pop();
+	    for(int i=0 ; i<V ; i++) {
+	        if(inDegree[i] == 0) {
+	            q.push(i);
+	        }
+	    }
+	    while(!q.empty()) {
+	        ans.push_back(q.front());
+	        int node = q.front();
+	        q.pop();
+	        for(auto it : adj[node]) {
+	            inDegree[it]--;
+	            if(inDegree[it] == 0) {
+	                q.push(it);
+	            }
+	        }
 	    }
 	    return ans;
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	   // DFS:
+	   // vector<int> vis(V+1,0);
+	   // vector<int> ans;
+	   // stack<int> st;
+	   // for(int i=0 ; i<V ; i++) {
+	   //     if(vis[i] == 0) {
+	   //         solve(i, st, vis, adj);
+	   //     }
+	   // }
+	   // while(!st.empty()) {
+	   //     ans.push_back(st.top());
+	   //     st.pop();
+	   // }
+	   // return ans;
 	   
 	}
 };
