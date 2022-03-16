@@ -20,7 +20,7 @@ class Solution{
         for (int i = 0; i < V - 1; i++) {
      
             for (int j = 0; j < adj.size(); j++) {
-                if (dis[adj[j][0]] != 1e8 && dis[adj[j][0]] + adj[j][2] < dis[adj[j][1]])
+                if (dis[adj[j][0]] + adj[j][2] < dis[adj[j][1]])
                     dis[adj[j][1]] = dis[adj[j][0]] + adj[j][2];
             }
         }
