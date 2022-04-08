@@ -4,7 +4,8 @@ public:
         unordered_map<int,int> m;
         int occurence = nums.size()/2;
         for(int i=0 ; i<nums.size() ; i++){
-            if(++m[nums[i]] > occurence){
+            m[nums[i]]++;
+            if(m[nums[i]] > occurence){
                 return nums[i];
             }
         }
