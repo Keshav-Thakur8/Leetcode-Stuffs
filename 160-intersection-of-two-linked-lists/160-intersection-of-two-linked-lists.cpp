@@ -28,10 +28,10 @@ public:
         ListNode* p2 = headB;
         while(p1 != p2){
             if(p1 == NULL){
-                p1 = headA;
+                p1 = headB;
             }
             else if(p2 == NULL){
-                p2 = headB;
+                p2 = headA;
             }
             else{
                 p1 = p1->next;
