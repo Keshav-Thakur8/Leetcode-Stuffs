@@ -9,33 +9,35 @@
 class Solution {
 public:
     ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
-        // ListNode* ans = NULL;
-        unordered_map<ListNode*, int> mp;
-        while(headA != NULL) {
-            mp[headA]++;
-            headA = headA->next;
-        }
-        while(headB != NULL) {
-            if(mp.find(headB) != mp.end()) {
-                return headB;
-            }
-            headB = headB->next;
-        }
-        return NULL;
-        // ListNode* p1 = headA;
-        // ListNode* p2 = headB;
-        // while(p1 != p2){
-        //     if(p1 == NULL){
-        //         p1 = headA;
-        //     }
-        //     else if(p2 == NULL){
-        //         p2 = headB;
-        //     }
-        //     else{
-        //         p1 = p1->next;
-        //         p2 = p2->next;
-        //     }
+        // // Hashmap Approach
+        // unordered_map<ListNode*, int> mp;
+        // while(headA != NULL) {
+        //     mp[headA]++;
+        //     headA = headA->next;
         // }
-        // return p1;
+        // while(headB != NULL) {
+        //     if(mp.find(headB) != mp.end()) {
+        //         return headB;
+        //     }
+        //     headB = headB->next;
+        // }
+        // return NULL;
+        
+        
+        ListNode* p1 = headA;
+        ListNode* p2 = headB;
+        while(p1 != p2){
+            if(p1 == NULL){
+                p1 = headA;
+            }
+            else if(p2 == NULL){
+                p2 = headB;
+            }
+            else{
+                p1 = p1->next;
+                p2 = p2->next;
+            }
+        }
+        return p1;
     }
 };
